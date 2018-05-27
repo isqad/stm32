@@ -1,4 +1,5 @@
 #include "stm32f10x.h"
+#define STM32F10X_MD
 
 void delay(void);
 
