@@ -1,5 +1,5 @@
-#include "stm32f10x.h"
 #define STM32F10X_MD
+#include "stm32f10x.h"
 
 void delay(void);
 
@@ -36,7 +36,7 @@ int main()
 
 void delay(void)
 {
-  for (uint32_t i = 0; i < 100000; i++)
+  for (uint32_t i = 0; i < 1000000; i++)
   {
     asm("NOP");
   }

@@ -1,6 +1,7 @@
 /**
  * Startup file for stm32f103
  **/
+#define STM32F10X_MD
 #include "stm32f10x.h"
 
 // макро-определение для weak-определений
