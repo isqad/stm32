@@ -15,3 +15,6 @@ startup.o:
 
 clean:
 	rm *.bin *.o *.elf
+
+flash:
+	st-flash write main.bin 0x08000000
