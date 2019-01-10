@@ -81,21 +81,97 @@ void WEAK DMA2_Channel2_IRQHandler(void);
 void WEAK DMA2_Channel3_IRQHandler(void);
 void WEAK DMA2_Channel4_5_IRQHandler(void);
 
+void WEAK Reserved_Handler(void);
+
 // вершина стека объявляется extern, так как будет определена на этапе линковки
 extern uint32_t _stack;
 
 extern int main(void);
 
 // таблица векторов прерываний
-// пока для старта определим ее как простенькую
 __attribute__((section(".interrupt_vectors_simple")))
 void (* const InterruptVectorsSimple[])(void) =
 {
   (void *)&_stack,
-  Reset_Handler
+  Reset_Handler,
+  NMI_Handler,
+  HardFault_Handler,
+  MemManage_Handler,
+  BusFault_Handler,
+  UsageFault_Handler,
+  Reserved_Handler,
+  Reserved_Handler,
+  Reserved_Handler,
+  Reserved_Handler,
+  SVCall_Handler,
+  DebugMonitor_Handler,
+  Reserved_Handler,
+  PendSV_Handler,
+  SysTick_Handler,
+  WWDG_IRQHandler,
+  PVD_IRQHandler,
+  TAMPER_IRQHandler,
+  RTC_IRQHandler,
+  FLASH_IRQHandler,
+  RCC_IRQHandler,
+  EXTl0_IRQHandler,
+  EXTl1_IRQHandler,
+  EXTl2_IRQHandler,
+  EXTl3_IRQHandler,
+  EXTl4_IRQHandler,
+  DMA1_Channel1_IRQHandler,
+  DMA1_Channel2_IRQHandler,
+  DMA1_Channel3_IRQHandler,
+  DMA1_Channel4_IRQHandler,
+  DMA1_Channel5_IRQHandler,
+  DMA1_Channel6_IRQHandler,
+  DMA1_Channel7_IRQHandler,
+  ADC1_2_IRQHandler,
+  USB_HP_CAN_TX_IRQHandler,
+  USB_LP_CAN_RX0_IRQHandler,
+  CAN_RX1_IRQHandler,
+  CAN_SCE_IRQHandler,
+  EXTl9_5_IRQHandler,
+  TIM1_BRK_IRQHandler,
+  TIM1_UP_IRQHandler,
+  TIM1_TRG_COM_IRQHandler,
+  TIM1_CC_IRQHandler,
+  TIM2_IRQHandler,
+  TIM3_IRQHandler,
+  TIM4_IRQHandler,
+  I2C1_EV_IRQHandler,
+  I2C1_ER_IRQHandler,
+  I2C2_EV_IRQHandler,
+  I2C2_ER_IRQHandler,
+  SPI1_IRQHandler,
+  SPI2_IRQHandler,
+  USART1_IRQHandler,
+  USART2_IRQHandler,
+  USART3_IRQHandler,
+  EXTl15_10_IRQHandler,
+  RTCAlarm_IRQHandler,
+  USBWakeup_IRQHandler,
+  TIM8_BRK_IRQHandler,
+  TIM8_UP_IRQHandler,
+  TIM8_TRG_COM_IRQHandler,
+  TIM8_CC_IRQHandler,
+  ADC3_IRQHandler,
+  FSMC_IRQHandler,
+  STDIO_IRQHandler,
+  TIM5_IRQHandler,
+  SPI3_IRQHandler,
+  UART4_IRQHandler,
+  UART5_IRQHandler,
+  TIM6_IRQHandler,
+  TIM7_IRQHandler,
+  DMA2_Channel1_IRQHandler,
+  DMA2_Channel2_IRQHandler,
+  DMA2_Channel3_IRQHandler,
+  DMA2_Channel4_5_IRQHandler,
 };
 
 void Reset_Handler(void)
 {
   main();
 }
+
